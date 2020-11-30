@@ -26,6 +26,6 @@
 }
 
 .dropDown:hover .dropButton {
-    background-color: #000000; 
+    background-color: #aaa2a2; 
     color: rgb(22, 0, 0); /*Färg på text när dropdown är aktiverad*/
 }
