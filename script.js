@@ -1,11 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   
-  document.getElementById("startGame").addEventListener("click", function() {
-  
-   let newGame = new Game();
-   newGame.new_game();
-  })
-  
+
+
 class Game{
   constructor(players, player_in_turn, stack){
       this.players = []
@@ -39,8 +35,9 @@ class Game{
   }
 
   noOfSticks(e) {
-    this.stack = this.stack.slice(0,stack.length- e);
-    console.log(stack)
+    this.stack = this.stack.slice(0,this.stack.length- e);
+    console.log(this.stack);
+    document.getElementById("stack").innerHTML = this.stack;
   }
   }
   // document.getElementById("btn_player1").addEventListener("click", function() {
@@ -54,15 +51,37 @@ class Game{
       
   //     this.noOfSticks(inputValue);
   //     console.log(inputValue);
+
+  let newGame = new Game();
+  
+  document.getElementById("startGame").addEventListener("click", function() {
+    newGame.new_game();
+   
+   
+  })
   
 let btplayer1 = document.getElementById("btn_player1");
 let btplayer2 = document.getElementById("btn_player2");
 let inputValue = document.getElementById("noPl1");
+let inputValue2 = document.getElementById("noPl2");
 
 btplayer1.addEventListener("click", function(){
   let value = inputValue.valueAsNumber;
- noOfSticks(value);
+  console.log(value);
+  console.log(newGame);
+ newGame.noOfSticks(value);
+ document.getElementById("btn_player1").disabled = true;
+ document.getElementById("btn_player2").disabled = false;
   })
+  btplayer2.addEventListener("click", function(){
+    let value2 = inputValue2.valueAsNumber;
+    console.log(value2);
+    console.log(newGame);
+   newGame.noOfSticks(value2);
+   document.getElementById("btn_player2").disabled = true;
+   document.getElementById("btn_player1").disabled = false;
+    })
+
 
 
 // btplayer1.addEventListener("click",() => {newGame.noOfSticks(inputValue)});
