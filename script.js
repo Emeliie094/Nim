@@ -34,10 +34,19 @@ class Game{
   }
   }
 
+  //Har ändrat här i noOfSticks!! När man tar den sista pinnen så poppar en confirm ruta upp och man får välja om man vill spela igen eller bara avbryta. Om man vill spela igen så startar ett nytt spel.
+
   noOfSticks(e) {
-    this.stack = this.stack.slice(0,this.stack.length- e);
-    console.log(this.stack);
-    document.getElementById("stack").innerHTML = this.stack;
+  /* NY RAD*/ if(this.stack > "I"){ 
+  this.stack = this.stack.slice(0,this.stack.length- e);
+  console.log(this.stack);
+  document.getElementById("stack").innerHTML = this.stack;
+
+  /* NY RAD*/ } else{let game_over = confirm("Du förlorade, vill ni spela igen?")
+  /* NY RAD*/ if(game_over === true){
+  /* NY RAD*/  newGame.new_game()
+  /* NY RAD*/}
+  }
   }
   }
   // document.getElementById("btn_player1").addEventListener("click", function() {
