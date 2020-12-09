@@ -23,15 +23,32 @@ Skapa en tabell som innehåller de tio bästa spelarna sett till hur många poä
 
 //Array med 21 objekt? eller värde 21 som minskar?
 //Varje spelare plockar 1-3 pinnar ur arrayen
-
-class Game {
-  constructor() {}
-
-  startGame() {}
-
-  whosTurn() {
-    //Håll reda på vems tur det är. Ska man göra true/false eller kolla värde?
+document.addEventListener("DOMContentLoaded", function () {
+  
+  document.getElementById("startGame").addEventListener("click", function() {
+  
+   let newGame = new Game();
+   newGame.new_game();
+  })
+  
+class Game{
+  constructor(players, player_in_turn, stack){
+      this.players = []
+      this.player_in_turn = player_in_turn
+      this.stack = stack
   }
+  new_game(){
+  let player1 = prompt("Please enter your name player 1");
+  let player2 = prompt("Please enter your name player 2");
+
+  document.getElementById("player1Name").innerHTML = player1;
+  document.getElementById("player2Name").innerHTML = player2;
+ 
+   this.players = new Player(player1,player2);
+   this.stack = "IIIIIIIIIIIIIIIIIIII";
+   document.getElementById("stack").innerHTML = this.stack;
+  }
+  slump_player(){}
 
   noOfSticks() {
     //Värde med 21 som minskar varje gång någon välje 1,2 eller 3.
@@ -39,8 +56,12 @@ class Game {
 }
 
 class Player {
-  constructor(name, points) {
+  constructor(name) {
     this.name = name;
-    this.points = points;
+    
   }
 }
+
+})
+'egnkej'
+
