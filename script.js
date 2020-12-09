@@ -39,8 +39,8 @@ class Game{
   }
 
   noOfSticks(e) {
-    this.stack = stack.slice(0,stack.length- e);
-    console.log(this.stack)
+    this.stack = this.stack.slice(0,stack.length- e);
+    console.log(stack)
   }
   }
   // document.getElementById("btn_player1").addEventListener("click", function() {
@@ -61,8 +61,8 @@ let inputValue = document.getElementById("noPl1");
 
 btplayer1.addEventListener("click", function(){
   let value = inputValue.valueAsNumber;
- newGame.noOfSticks(value);
-  },
+ noOfSticks(value);
+  })
 
 
 // btplayer1.addEventListener("click",() => {newGame.noOfSticks(inputValue)});
@@ -72,8 +72,9 @@ class Player {
   constructor(name) {
     this.name = name;
   }
-})}
-)
+}
 
 
 
+
+})
