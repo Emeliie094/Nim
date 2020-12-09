@@ -1,28 +1,3 @@
-/* Nim är ett spel som finns i olika versioner med olika regler.
-I vår version ska vi ha två spelare och en hög med 21 stickor.
-Spelarna turas om att ta en, två eller tre stickor.
-Spelaren som tar den sista stickan förlorar.
-
-Utförande
-Skapa en skiss över er sida.
-Skapa en plan för strukturen för er kod.
-Vilka klasser behöver ni? Egenskaper? Metoder?
-Skapa en ”huvudklass” som håller reda på spelet, vems tur det är osv.
-Skapa klasser för olika entiteter.
-Jobba i grupperna, lämna in individuellt.
-
-Utmaningar 
-Tänk er att två spelare sitter bredvid varandra framför datorn. Ni behöver alltså inte göra någon datorspelare eller liknande.
-Håll reda på spelarnas namn och vems tur det är.
-Håll reda på högen med pinnar grafiskt på något sätt.
-Visa vinnaren när spelet är slut.
-
-Extrauppgift
-Vid vinst i en match får spelaren två poäng.
-Skapa en tabell som innehåller de tio bästa spelarna sett till hur många poäng de någonsin har tagit. */
-
-//Array med 21 objekt? eller värde 21 som minskar?
-//Varje spelare plockar 1-3 pinnar ur arrayen
 document.addEventListener("DOMContentLoaded", function () {
   
   document.getElementById("startGame").addEventListener("click", function() {
@@ -47,21 +22,59 @@ class Game{
    this.players = new Player(player1,player2);
    this.stack = "IIIIIIIIIIIIIIIIIIII";
    document.getElementById("stack").innerHTML = this.stack;
+    this.slump_player();
   }
-  slump_player(){}
+  slump_player(){
+   let randomNr= Math.floor(Math.random() * 2)+1;
+    if (randomNr === 1) {
+      document.getElementById("btn_player2").disabled = true;
+      let element = document.getElementById("h_player1");
+      element.style.color = "green";
+  }
+  else{
+    document.getElementById("btn_player1").disabled = true;
+    let element = document.getElementById("h_player2");
+      element.style.color = "green";
+  }
+  }
 
-  noOfSticks() {
-    //Värde med 21 som minskar varje gång någon välje 1,2 eller 3.
+  noOfSticks(e) {
+    this.stack = stack.slice(0,stack.length- e);
+    console.log(this.stack)
   }
-}
+  }
+  // document.getElementById("btn_player1").addEventListener("click", function() {
+  //   let inputValue = document.getElementById("noPl1");
+    
+  //   this.noOfSticks(inputValue);
+  //   console.log(inputValue);
+  //   })
+  // document.getElementById("btn_player2").addEventListener("click", function() {
+  //     let inputValue = document.getElementById("noPl2").valueAsNumber;
+      
+  //     this.noOfSticks(inputValue);
+  //     console.log(inputValue);
+  
+let btplayer1 = document.getElementById("btn_player1");
+let btplayer2 = document.getElementById("btn_player2");
+let inputValue = document.getElementById("noPl1");
+
+btplayer1.addEventListener("click", function(){
+  let value = inputValue.valueAsNumber;
+ newGame.noOfSticks(value);
+  },
+
+
+// btplayer1.addEventListener("click",() => {newGame.noOfSticks(inputValue)});
+// btplayer2.addEventListener("click",() => {newGame.noOfSticks()});
 
 class Player {
   constructor(name) {
     this.name = name;
-    
   }
-}
+}}
+)
 
-})
-'egnkej'
+
+
 
