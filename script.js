@@ -3,16 +3,22 @@ document.addEventListener("DOMContentLoaded", function () {
     constructor(player_in_turn, stack) {
       this.player_in_turn = player_in_turn;
       this.stack = stack;
+      this.playersarray = [];
     }
+    
     new_game() {
       let player1Name = prompt("Please enter your name player 1");
       let player2Name = prompt("Please enter your name player 2");
        
-      console.log(this.player);
+      //console.log(this.player);
       document.getElementById("player1Name").innerHTML = player1Name;
       document.getElementById("player2Name").innerHTML = player2Name;
       let player1 = new Player(player1Name);
       let player2 = new Player(player2Name);
+
+      this.playersarray.push(player1);
+      this.playersarray.push(player2);
+      
       this.stack = "IIIIIIIIIIIIIIIIIIII";
       document.getElementById("stack").innerHTML = this.stack;
       this.slump_player();
@@ -49,20 +55,23 @@ document.addEventListener("DOMContentLoaded", function () {
         this.endGame();
       }
     }
-    endGame(player1,player2){
-      let game_over = confirm("Du förlorade, vill ni spela igen?");
-      console.log(player1);
-      console.log(player2);
+    endGame(){
+      confirm("Du förlorade, vill ni spela igen?");
+      console.log(this.playersarray);
+
         // if (game_over === true) {
-        //   if (document.getElementById("btn_player1").disabled = true) {
-            
-                  
-        //   }
-          
-        // }
+        if (document.getElementById("btn_player1").disabled = true) {
+            let winner = this.playersarray[0];
+            winner.addPoints();
+            highScore.push(winner);
 
+        } else {
+          let winner = this.playersarray[1];
+          winner.addPoints();
+          highScore.push(winner);
+          console.log(highScore);
+        }
     }
-
   }
   
   let highScore = [];
@@ -110,6 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
       this.name = name;
       this.score = 0;
     
+    }
+
+    addPoints() {
+      this.score +=2; 
     }
     
     // addWinner(winner){
