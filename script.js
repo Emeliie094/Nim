@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
       this.stack = stack;
       this.playersarray = [];
     }
-    
+
     new_game() {
       let player1Name = prompt("Please enter your name player 1");
       let player2Name = prompt("Please enter your name player 2");
-       
+
       //console.log(this.player);
       document.getElementById("player1Name").innerHTML = player1Name;
       document.getElementById("player2Name").innerHTML = player2Name;
@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       this.playersarray.push(player1);
       this.playersarray.push(player2);
-      
+
       this.stack = "IIIIIIIIIIIIIIIIIIII";
       document.getElementById("stack").innerHTML = this.stack;
       this.slump_player();
-      console.log(player1,player2);
+      console.log(player1, player2);
     }
     slump_player() {
       let randomNr = Math.floor(Math.random() * 2) + 1;
@@ -55,25 +55,35 @@ document.addEventListener("DOMContentLoaded", function () {
         this.endGame();
       }
     }
-    endGame(){
+    endGame() {
       confirm("Du förlorade, vill ni spela igen?");
       console.log(this.playersarray);
 
-        // if (game_over === true) {
-        if (document.getElementById("btn_player1").disabled = true) {
-            let winner = this.playersarray[0];
-            winner.addPoints();
-            highScore.push(winner);
-
-        } else {
-          let winner = this.playersarray[1];
-          winner.addPoints();
-          highScore.push(winner);
-          console.log(highScore);
-        }
+      // if (game_over === true) {
+      if ((document.getElementById("btn_player1").disabled = true)) {
+        let winner = this.playersarray[0];
+        winner.addPoints();
+        highScore.push(winner);
+      } else {
+        let winner = this.playersarray[1];
+        winner.addPoints();
+        highScore.push(winner);
+        console.log(highScore);
+      }
     }
   }
-  
+
+  class Player {
+    constructor(name) {
+      this.name = name;
+      this.score = 0;
+    }
+
+    addPoints() {
+      this.score += 2;
+    }
+  }
+
   let highScore = [];
   let newGame = new Game();
 
@@ -113,26 +123,4 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("noPl1").disabled = false;
     document.getElementById("h_player1").style.color = "green";
   });
-
-  class Player {
-    constructor(name) {
-      this.name = name;
-      this.score = 0;
-    
-    }
-
-    addPoints() {
-      this.score +=2; 
-    }
-    
-    // addWinner(winner){
-    // if (highScore.includes(winner.name) ){
-    //   // add to score
-    // }else{
-    //   //add name to array of players and add too score
-    // }
-    // newGame.new_game();
-    // }
-  }
-  
 });
