@@ -37,16 +37,26 @@ class Game{
   //Har ändrat här i noOfSticks!! När man tar den sista pinnen så poppar en confirm ruta upp och man får välja om man vill spela igen eller bara avbryta. Om man vill spela igen så startar ett nytt spel.
 
   noOfSticks(e) {
-  /* NY RAD*/ if(this.stack > "I"){ 
-  this.stack = this.stack.slice(0,this.stack.length- e);
+  /* NY RAD*/ if(this.stack.length > 1){ 
+  this.stack = this.stack.slice(0,- e);
   console.log(this.stack);
   document.getElementById("stack").innerHTML = this.stack;
 
   /* NY RAD*/ } else{let game_over = confirm("Du förlorade, vill ni spela igen?")
   /* NY RAD*/ if(game_over === true){
+    window.location.reload();
   /* NY RAD*/  newGame.new_game()
+  
   /* NY RAD*/}
   }
+  }
+
+  checkSum(){
+    if (this.stack.length < 1){
+      let game_over = confirm("Du förlorade, vill ni spela igen?")
+      if(game_over === true){
+        newGame.new_game()}
+    }
   }
   }
   // document.getElementById("btn_player1").addEventListener("click", function() {
@@ -79,6 +89,7 @@ btplayer1.addEventListener("click", function(){
   console.log(value);
   console.log(newGame);
  newGame.noOfSticks(value);
+ newGame.checkSum();
  document.getElementById("btn_player1").disabled = true;
  document.getElementById("btn_player2").disabled = false;
   })
@@ -87,6 +98,7 @@ btplayer1.addEventListener("click", function(){
     console.log(value2);
     console.log(newGame);
    newGame.noOfSticks(value2);
+   newGame.checkSum();
    document.getElementById("btn_player2").disabled = true;
    document.getElementById("btn_player1").disabled = false;
     })
