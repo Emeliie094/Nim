@@ -1,10 +1,14 @@
-.main{
- margin-left: 30%;
+.main {
+  margin-left: 30%;
 }
 
-h3{
-font-size: 70px;
-font-stretch: wider;
+.column {
+  margin: 10px;
+}
+
+h3 {
+  font-size: 70px;
+  font-stretch: wider;
 }
 .card {
   margin: 70px auto 70px auto;
