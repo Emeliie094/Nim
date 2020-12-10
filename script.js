@@ -41,13 +41,15 @@ class Game{
   this.stack = this.stack.slice(0,- e);
   console.log(this.stack);
   document.getElementById("stack").innerHTML = this.stack;
-
-  /* NY RAD*/ } else{let game_over = confirm("Du förlorade, vill ni spela igen?")
-  /* NY RAD*/ if(game_over === true){
-    window.location.reload();
-  /* NY RAD*/  newGame.new_game()
-  
-  /* NY RAD*/}
+}
+   else{
+     let game_over = confirm("Du förlorade, vill ni spela igen?")
+     
+  if(game_over === true){
+   // window.location.reload();
+    newGame.new_game()
+    
+  }
   }
   }
 
@@ -55,8 +57,12 @@ class Game{
     if (this.stack.length < 1){
       let game_over = confirm("Du förlorade, vill ni spela igen?")
       if(game_over === true){
+        //window.location.reload();
         newGame.new_game()}
+        
     }
+    //document.getElementById("noPl1").reset();
+    //document.getElementById("noPl2").reset();
   }
   }
   // document.getElementById("btn_player1").addEventListener("click", function() {
@@ -91,7 +97,12 @@ btplayer1.addEventListener("click", function(){
  newGame.noOfSticks(value);
  newGame.checkSum();
  document.getElementById("btn_player1").disabled = true;
+ document.getElementById("noPl1").disabled = true;
+ document.getElementById('noPl1').value = '';
  document.getElementById("btn_player2").disabled = false;
+ document.getElementById("noPl2").disabled = false;
+ document.getElementById("h_player1").style.color = "black";
+ document.getElementById("h_player2").style.color = "green";
   })
   btplayer2.addEventListener("click", function(){
     let value2 = inputValue2.valueAsNumber;
@@ -100,7 +111,12 @@ btplayer1.addEventListener("click", function(){
    newGame.noOfSticks(value2);
    newGame.checkSum();
    document.getElementById("btn_player2").disabled = true;
+   document.getElementById("noPl2").disabled = true;
+   document.getElementById('noPl2').value = '';
    document.getElementById("btn_player1").disabled = false;
+   document.getElementById("noPl1").disabled = false;
+   document.getElementById("h_player1").style.color = "green";
+   document.getElementById("h_player2").style.color = "black";
     })
 
 
