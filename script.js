@@ -5,16 +5,18 @@ document.addEventListener("DOMContentLoaded", function () {
       this.stack = stack;
     }
     new_game() {
-      let player1 = prompt("Please enter your name player 1");
-      let player2 = prompt("Please enter your name player 2");
-
-      document.getElementById("player1Name").innerHTML = player1;
-      document.getElementById("player2Name").innerHTML = player2;
-
-      //this.players = new Player(player1, player2);
+      let player1Name = prompt("Please enter your name player 1");
+      let player2Name = prompt("Please enter your name player 2");
+       
+      console.log(this.player);
+      document.getElementById("player1Name").innerHTML = player1Name;
+      document.getElementById("player2Name").innerHTML = player2Name;
+      let player1 = new Player(player1Name);
+      let player2 = new Player(player2Name);
       this.stack = "IIIIIIIIIIIIIIIIIIII";
       document.getElementById("stack").innerHTML = this.stack;
       this.slump_player();
+      console.log(player1,player2);
     }
     slump_player() {
       let randomNr = Math.floor(Math.random() * 2) + 1;
@@ -38,26 +40,32 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(this.stack);
         document.getElementById("stack").innerHTML = this.stack;
       } else {
-        let game_over = confirm("Du förlorade, vill ni spela igen?");
-
-        if (game_over === true) {
-          // window.location.reload();
-          newGame.new_game();
-        }
+        this.endGame();
       }
     }
 
     checkSum() {
       if (this.stack.length < 1) {
-        let game_over = confirm("Du förlorade, vill ni spela igen?");
-        if (game_over === true) {
-          //window.location.reload();
-          newGame.new_game();
-        }
+        this.endGame();
       }
     }
-  }
+    endGame(player1,player2){
+      let game_over = confirm("Du förlorade, vill ni spela igen?");
+      console.log(player1);
+      console.log(player2);
+        // if (game_over === true) {
+        //   if (document.getElementById("btn_player1").disabled = true) {
+            
+                  
+        //   }
+          
+        // }
 
+    }
+
+  }
+  
+  let highScore = [];
   let newGame = new Game();
 
   document.getElementById("startGame").addEventListener("click", function () {
@@ -101,8 +109,17 @@ document.addEventListener("DOMContentLoaded", function () {
     constructor(name) {
       this.name = name;
       this.score = 0;
+    
     }
-
-    addPlayer() {}
+    
+    // addWinner(winner){
+    // if (highScore.includes(winner.name) ){
+    //   // add to score
+    // }else{
+    //   //add name to array of players and add too score
+    // }
+    // newGame.new_game();
+    // }
   }
+  
 });
