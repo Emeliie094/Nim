@@ -35,19 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
       let randomNr = Math.floor(Math.random() * 2) + 1;
 
       if (randomNr === 1) {
-        //playerTurn = true;
-        // document.getElementById("btn_player2").disabled = true;
+        document.getElementById("btn_player2").disabled = true;
         let element = document.getElementById("h_player1");
-        // document.getElementById("noPl2").disabled = true;
+        document.getElementById("noPl2").disabled = true;
         document.getElementById("noPl2").value = "";
         document.getElementById("h_player2").style.color = "black";
 
         element.style.color = "green";
       } else {
-        // playerTurn = false;
-        // document.getElementById("btn_player1").disabled = true;
+        document.getElementById("btn_player1").disabled = true;
         let element = document.getElementById("h_player2");
-        // document.getElementById("noPl1").disabled = true;
+        document.getElementById("noPl1").disabled = true;
         document.getElementById("noPl1").value = "";
         document.getElementById("h_player1").style.color = "black";
 
@@ -80,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     endGame() {
       // if (game_over === true) {
       let winner;
+
       if (document.getElementById("btn_player1").disabled === true) {
         winner = this.playersArray[0];
       } else {
@@ -97,30 +96,19 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!found) {
         winner.addPoints();
         highScore.push(winner);
-        console.log("hejhej");
       }
+      if (confirm(`${winner.name} vann! Vill ni spela igen?`)) {
+        newGame.new_game();
+      } else {
+        stopGame = true;
 
-      //if (highScore.includes(winner.name) === true) {
-      confirm(`${winner.name} vann! Vill ni spela igen?`);
-
-      // else {
-      //   let winner = this.playersArray[1];
-
-      //   if (highScore.includes(winner.name) === true) {
-      //     highScore.winner.score += 2;
-      //     return;
-      //   } else {
-      //     winner.addPoints();
-      //     highScore.push(winner);
-      //   }
-      //   confirm(`${winner.name} vann! Vill ni spela igen?`);
-      // }
-
-      console.log(highScore);
+        alert(`Tack för att du spelade! Välkommen åter`);
+      }
 
       //Metoden endgame() kollar vilken spelare som var disabled när spelet slutade. Om spelare var disabled betyder det att hen vann.
       //Vi kallar på metoden addpoints(). Sedan pushar vi in vår winner i arrayen highScore.
     }
+
     createATable() {}
   }
 
@@ -139,8 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let highScore = [];
 
   let newGame = new Game();
-  let playerTurn = true;
-  let test = 1;
+  let stopGame = false;
 
   document.getElementById("startGame").addEventListener("click", function () {
     newGame.new_game();
@@ -154,17 +141,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   btplayer1.addEventListener("click", function () {
     let value = inputValue.valueAsNumber;
-    newGame.noOfSticks(value);
-    newGame.checkSum();
-    // playerTurn = false;
-    document.getElementById("btn_player1").disabled = true;
-    document.getElementById("noPl1").disabled = true;
-    document.getElementById("noPl1").value = "";
-    document.getElementById("h_player1").style.color = "black";
+    if (value < 1 || value > 3 || value === undefined) {
+      alert("Välj ett nummer mellan 1 och 3");
+    } else {
+      newGame.noOfSticks(value);
+      newGame.checkSum();
+      if (stopGame) {
+        document.getElementById("btn_player2").disabled = false;
+        document.getElementById("noPl2").disabled = false;
+        document.getElementById("h_player2").style.color = "black";
 
-    document.getElementById("btn_player2").disabled = false;
-    document.getElementById("noPl2").disabled = false;
-    document.getElementById("h_player2").style.color = "green";
+        document.getElementById("btn_player1").disabled = false;
+        document.getElementById("noPl1").disabled = false;
+        document.getElementById("h_player1").style.color = "black";
+      } else {
+        document.getElementById("btn_player1").disabled = true;
+        document.getElementById("noPl1").disabled = true;
+        document.getElementById("noPl1").value = "";
+        document.getElementById("h_player1").style.color = "black";
+
+        document.getElementById("btn_player2").disabled = false;
+        document.getElementById("noPl2").disabled = false;
+        document.getElementById("h_player2").style.color = "green";
+      }
+    }
 
     //När spelare 1 klickar på knappen 1 att ta pinnar händer följande:
     //Value blir det value som spelaren skrivit in i number-fältet. Detta skickas in i metoden noOfSticks.
@@ -173,17 +173,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   btplayer2.addEventListener("click", function () {
     let value2 = inputValue2.valueAsNumber;
-    newGame.noOfSticks(value2);
-    newGame.checkSum();
-    // playerTurn = false;
-    document.getElementById("btn_player2").disabled = true;
-    document.getElementById("noPl2").disabled = true;
-    document.getElementById("noPl2").value = "";
-    document.getElementById("h_player2").style.color = "black";
+    if (value2 < 1 || value2 > 3 || value2 === "") {
+      alert("Välj ett nummer mellan 1 och 3");
+    } else {
+      newGame.noOfSticks(value2);
+      newGame.checkSum();
+      if (stopGame) {
+        document.getElementById("btn_player2").disabled = false;
+        document.getElementById("noPl2").disabled = false;
+        document.getElementById("h_player2").style.color = "black";
 
-    document.getElementById("btn_player1").disabled = false;
-    document.getElementById("noPl1").disabled = false;
-    document.getElementById("h_player1").style.color = "green";
+        document.getElementById("btn_player1").disabled = false;
+        document.getElementById("noPl1").disabled = false;
+        document.getElementById("h_player1").style.color = "black";
+      } else {
+        document.getElementById("btn_player2").disabled = true;
+        document.getElementById("noPl2").disabled = true;
+        document.getElementById("noPl2").value = "";
+        document.getElementById("h_player2").style.color = "black";
+
+        document.getElementById("btn_player1").disabled = false;
+        document.getElementById("noPl1").disabled = false;
+        document.getElementById("h_player1").style.color = "green";
+      }
+    }
   });
 
   //När spelare 2 klickar på knappen 1 att ta pinnar händer följande:
