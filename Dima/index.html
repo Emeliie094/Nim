@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nim Game</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index_style.css" />  
+</head>
+
+<body>
+
+
+  <div id="top10">
+    <table>
+      <tbody id="tBody">
+        
+      </tbody>
+    </table>
+  </div>
+
+<div class="main">
+  <h2>Nim Game</h2>
+  
+  <table class="table">
+    <tbody>
+      <tr>
+        <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      </tr>
+    <tr >
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+    </tr>
+    
+    <tr>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td> 
+    </tr>
+    <tr>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td> 
+    </tr>
+    <tr>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td  width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+      <td width= "32px" class="matches "><img src="https://banner2.cleanpng.com/20180203/uie/kisspng-match-com-match-stick-5a75534968a0d3.9700551215176384734286.jpg"></td>
+  
+    </tr>
+  </tbody>
+  </table>
+
+  <div class="container mt-5">
+    <div class="row buttons align-items-center align-self-center">
+      <div class="col-md-3 currentPlayer player" id="p1">
+        
+      </div>
+      <div class="col-md-3 delete">
+        <div class="button">
+          Delete
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="button" id="restart">
+          Restart
+        </div>
+      </div>
+      <div class="col-md-3 player" id="p2">
+       
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/nim.js"></script>
+</body>
+
+</html>
