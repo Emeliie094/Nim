@@ -99,8 +99,11 @@ document.addEventListener("DOMContentLoaded", function () {
         highScore.push(winner);
       }
       if (confirm(`${winner.name} vann! Vill ni spela igen?`)) {
+        this.playersArray = [];
+        console.log(this.playersArray);
         newGame.new_game();
       } else {
+        this.playersArray = [];
         stopGame = true;
 
         alert(`Tack för att du spelade! Välkommen åter`);
@@ -197,6 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
 
   //När spelare 2 klickar på knappen 1 att ta pinnar händer följande:
   //Value blir det value som spelaren skrivit in i number-fältet. Detta skickas in i metoden noOfSticks.
