@@ -36,23 +36,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (randomNr === 1) {
         //playerTurn = true;
-        document.getElementById("btn_player2").disabled = true;
+        // document.getElementById("btn_player2").disabled = true;
         let element = document.getElementById("h_player1");
-        document.getElementById("noPl2").disabled = true;
+        // document.getElementById("noPl2").disabled = true;
         document.getElementById("noPl2").value = "";
         document.getElementById("h_player2").style.color = "black";
 
         element.style.color = "green";
       } else {
         // playerTurn = false;
-        document.getElementById("btn_player1").disabled = true;
+        // document.getElementById("btn_player1").disabled = true;
         let element = document.getElementById("h_player2");
-        document.getElementById("noPl1").disabled = true;
+        // document.getElementById("noPl1").disabled = true;
         document.getElementById("noPl1").value = "";
         document.getElementById("h_player1").style.color = "black";
 
         element.style.color = "green";
-        /*-------LA TILL SÅ ATT DEN SOM EJ SLUMPAS FRAM, BLIR DISABLED REDAN FRÅN BÖRJAN. TIDIGARE VAR BARA KNAPPEN DISABLED */
 
         //Slumpar fram vilken spelare som ska börja. Den som INTE börjas, ska få en disabled knapp och number-input-.
         //Den som börjar ska få rubriken i grönt.
@@ -80,30 +79,55 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     endGame() {
       // if (game_over === true) {
+      let winner;
       if (document.getElementById("btn_player1").disabled === true) {
-        let winner = this.playersArray[0];
-        winner.addPoints();
-        highScore.push(winner);
-        confirm(`${winner.name} vann! Vill ni spela igen?`);
-        console.log(winner);
+        winner = this.playersArray[0];
       } else {
-        let winner = this.playersArray[1];
+        winner = this.playersArray[1];
+      }
+
+      let found = false;
+      for (let i = 0; i < highScore.length; i++) {
+        if (highScore[i].name === winner.name) {
+          found = true;
+          highScore[i].score += 2;
+        }
+      }
+
+      if (!found) {
         winner.addPoints();
         highScore.push(winner);
-        confirm(`${winner.name} vann! Vill ni spela igen?`);
-        //console.log(highScore);
-        console.log(winner);
+        console.log("hejhej");
       }
+
+      //if (highScore.includes(winner.name) === true) {
+      confirm(`${winner.name} vann! Vill ni spela igen?`);
+
+      // else {
+      //   let winner = this.playersArray[1];
+
+      //   if (highScore.includes(winner.name) === true) {
+      //     highScore.winner.score += 2;
+      //     return;
+      //   } else {
+      //     winner.addPoints();
+      //     highScore.push(winner);
+      //   }
+      //   confirm(`${winner.name} vann! Vill ni spela igen?`);
+      // }
+
+      console.log(highScore);
 
       //Metoden endgame() kollar vilken spelare som var disabled när spelet slutade. Om spelare var disabled betyder det att hen vann.
       //Vi kallar på metoden addpoints(). Sedan pushar vi in vår winner i arrayen highScore.
     }
+    createATable() {}
   }
 
   class Player {
-    constructor(name) {
+    constructor(name, score = 0) {
       this.name = name;
-      this.score = 0;
+      this.score = score;
     }
 
     addPoints() {
@@ -113,8 +137,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   let highScore = [];
+
   let newGame = new Game();
   let playerTurn = true;
+  let test = 1;
 
   document.getElementById("startGame").addEventListener("click", function () {
     newGame.new_game();
