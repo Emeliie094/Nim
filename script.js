@@ -91,13 +91,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (highScore[i].name === winner.name) {
           found = true;
           highScore[i].score += 2;
+          highScore.sort(this.calcHigh);
+          console.log(highScore);
         }
       }
 
       if (!found) {
         winner.addPoints();
         highScore.push(winner);
-        this.createATable();
+        highScore.sort(this.calcHigh);
+        console.log(highScore);
         
       }
       if (confirm(`${winner.name} vann! Vill ni spela igen?`)) {
@@ -125,6 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("h_player1").style.color = "black";
     }
 
+   calcHigh(a, b){
+      return a.score - b.score;
+    }
     createATable() { console.log(this.winner);
     document.getElementById("myTable").innerHTML = (`"<tr>" + "<td>" + "</td>" + "<td>" + 'på dej' + "</td>" + "</tr>"`);
     /*("<tr>" + 
@@ -210,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-
+  
 
   //När spelare 2 klickar på knappen 1 att ta pinnar händer följande:
   //Value blir det value som spelaren skrivit in i number-fältet. Detta skickas in i metoden noOfSticks.
