@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
       //En span i html-filen med id 'stack' tilldelas nu värdet av vår stack.
       this.slump_player();
       //tillkallar metoden slumpplayer()
-      console.log(player1, player2);
     }
     slump_player() {
       let randomNr = Math.floor(Math.random() * 2) + 1;
 
       if (randomNr === 1) {
+        //playerTurn = true;
         document.getElementById("btn_player2").disabled = true;
         let element = document.getElementById("h_player1");
         document.getElementById("noPl2").disabled = true;
@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         element.style.color = "green";
       } else {
+        // playerTurn = false;
         document.getElementById("btn_player1").disabled = true;
         let element = document.getElementById("h_player2");
         document.getElementById("noPl1").disabled = true;
@@ -78,19 +79,20 @@ document.addEventListener("DOMContentLoaded", function () {
       //Detta är en metod för att checka så att stacken är mindre än 1.
     }
     endGame() {
-      confirm("Du förlorade, vill ni spela igen?");
-      console.log(this.playersArray);
-
       // if (game_over === true) {
-      if ((document.getElementById("btn_player1").disabled = true)) {
+      if (document.getElementById("btn_player1").disabled === true) {
         let winner = this.playersArray[0];
         winner.addPoints();
         highScore.push(winner);
+        confirm(`${winner.name} vann! Vill ni spela igen?`);
+        console.log(winner);
       } else {
         let winner = this.playersArray[1];
         winner.addPoints();
         highScore.push(winner);
-        console.log(highScore);
+        confirm(`${winner.name} vann! Vill ni spela igen?`);
+        //console.log(highScore);
+        console.log(winner);
       }
 
       //Metoden endgame() kollar vilken spelare som var disabled när spelet slutade. Om spelare var disabled betyder det att hen vann.
@@ -112,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let highScore = [];
   let newGame = new Game();
+  let playerTurn = true;
 
   document.getElementById("startGame").addEventListener("click", function () {
     newGame.new_game();
@@ -127,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let value = inputValue.valueAsNumber;
     newGame.noOfSticks(value);
     newGame.checkSum();
+    // playerTurn = false;
     document.getElementById("btn_player1").disabled = true;
     document.getElementById("noPl1").disabled = true;
     document.getElementById("noPl1").value = "";
@@ -145,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let value2 = inputValue2.valueAsNumber;
     newGame.noOfSticks(value2);
     newGame.checkSum();
+    // playerTurn = false;
     document.getElementById("btn_player2").disabled = true;
     document.getElementById("noPl2").disabled = true;
     document.getElementById("noPl2").value = "";
