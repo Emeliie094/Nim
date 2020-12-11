@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
       //tillkallar metoden slumpplayer()
     }
     slump_player() {
-      newGame.resetGame();
+      this.resetGame();
       let randomNr = Math.floor(Math.random() * 2) + 1;
 
       if (randomNr === 1) {
