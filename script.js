@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     endGame() {
       // if (game_over === true) {
-      let winner;
+      
 
       if (document.getElementById("btn_player1").disabled === true) {
         winner = this.playersArray[0];
@@ -97,6 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!found) {
         winner.addPoints();
         highScore.push(winner);
+        this.createATable();
+        
       }
       if (confirm(`${winner.name} vann! Vill ni spela igen?`)) {
         this.playersArray = [];
@@ -123,7 +125,15 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("h_player1").style.color = "black";
     }
 
-    createATable() {}
+    createATable() { console.log(this.winner);
+    document.getElementById("myTable").innerHTML = (`"<tr>" + "<td>" + "</td>" + "<td>" + 'på dej' + "</td>" + "</tr>"`);
+    /*("<tr>" + 
+    "<td>My First Video</td>" +
+    "<td>6/11/2015</td>" +
+    "<td>www.pluralsight.com</td>" +
+    "</tr>");*/
+    
+   }
   }
 
   class Player {
@@ -137,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
       //Metoden addPoints() lägger till två poäng till vinnaren.
     }
   }
-
+  let winner;
   let highScore = [];
 
   let newGame = new Game();
