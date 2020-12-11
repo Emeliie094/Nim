@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
       //tillkallar metoden slumpplayer()
     }
     slump_player() {
+      newGame.resetGame();
       let randomNr = Math.floor(Math.random() * 2) + 1;
 
       if (randomNr === 1) {
@@ -109,6 +110,16 @@ document.addEventListener("DOMContentLoaded", function () {
       //Vi kallar på metoden addpoints(). Sedan pushar vi in vår winner i arrayen highScore.
     }
 
+    resetGame() {
+      document.getElementById("btn_player2").disabled = false;
+      document.getElementById("noPl2").disabled = false;
+      document.getElementById("h_player2").style.color = "black";
+
+      document.getElementById("btn_player1").disabled = false;
+      document.getElementById("noPl1").disabled = false;
+      document.getElementById("h_player1").style.color = "black";
+    }
+
     createATable() {}
   }
 
@@ -147,13 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newGame.noOfSticks(value);
       newGame.checkSum();
       if (stopGame) {
-        document.getElementById("btn_player2").disabled = false;
-        document.getElementById("noPl2").disabled = false;
-        document.getElementById("h_player2").style.color = "black";
-
-        document.getElementById("btn_player1").disabled = false;
-        document.getElementById("noPl1").disabled = false;
-        document.getElementById("h_player1").style.color = "black";
+        newGame.resetGame();
       } else {
         document.getElementById("btn_player1").disabled = true;
         document.getElementById("noPl1").disabled = true;
@@ -179,13 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newGame.noOfSticks(value2);
       newGame.checkSum();
       if (stopGame) {
-        document.getElementById("btn_player2").disabled = false;
-        document.getElementById("noPl2").disabled = false;
-        document.getElementById("h_player2").style.color = "black";
-
-        document.getElementById("btn_player1").disabled = false;
-        document.getElementById("noPl1").disabled = false;
-        document.getElementById("h_player1").style.color = "black";
+        newGame.resetGame();
       } else {
         document.getElementById("btn_player2").disabled = true;
         document.getElementById("noPl2").disabled = true;
