@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //Skapat klassen Game med följande key-value pairs i constuctorn.
 
     new_game() {
+      let gameStart = true;
       let player1Name = prompt("Please enter your name player 1");
       let player2Name = prompt("Please enter your name player 2");
       //När vi kallar på metoden new_game(), dyker en prompt-ruta upp där vi ber spelarna att skriva in namn.
@@ -110,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         this.playersArray = [];
         stopGame = true;
+        gameStart = false;
 
         alert(`Tack för att du spelade! Välkommen åter`);
       }
@@ -155,6 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   let winner;
   let highScore = [];
+  let gameStart = false;
 
   let newGame = new Game();
   let stopGame = false;
@@ -170,6 +173,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let inputValue2 = document.getElementById("noPl2");
 
   btplayer1.addEventListener("click", function () {
+    if (gameStart === false) {
+      alert("Press Start Game to start the game.")
+    }
     let value = inputValue.valueAsNumber;
     if (value < 1 || value > 3 || value === undefined) {
       alert("Välj ett nummer mellan 1 och 3");
@@ -196,6 +202,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   btplayer2.addEventListener("click", function () {
+    if (gameStart === false) {
+      alert("Press Start Game to start the game.")
+    }
     let value2 = inputValue2.valueAsNumber;
     if (value2 < 1 || value2 > 3 || value2 === "") {
       alert("Välj ett nummer mellan 1 och 3");
