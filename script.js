@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //Skapat klassen Game med följande key-value pairs i constuctorn.
 
     new_game() {
-      let gameStart = true;
+      gameStart = true;
       let player1Name = prompt("Please enter your name player 1");
       let player2Name = prompt("Please enter your name player 2");
       //När vi kallar på metoden new_game(), dyker en prompt-ruta upp där vi ber spelarna att skriva in namn.
@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     endGame() {
       // if (game_over === true) {
-      
 
       if (document.getElementById("btn_player1").disabled === true) {
         winner = this.playersArray[0];
@@ -92,7 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (highScore[i].name === winner.name) {
           found = true;
           highScore[i].score += 2;
-          highScore.sort(this.calcHigh);
+          highScore.sort(function (a, b) {
+            return b.score - a.score;
+          });
           console.log(highScore);
         }
       }
@@ -100,9 +101,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!found) {
         winner.addPoints();
         highScore.push(winner);
-        highScore.sort(this.calcHigh);
+        highScore.sort(function (a, b) {
+          return b.score - a.score;
+        });
         console.log(highScore);
-        
       }
       if (confirm(`${winner.name} vann! Vill ni spela igen?`)) {
         this.playersArray = [];
@@ -130,18 +132,17 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("h_player1").style.color = "black";
     }
 
-   calcHigh(a, b){
-      return a.score - b.score;
-    }
-    createATable() { console.log(this.winner);
-    document.getElementById("myTable").innerHTML = (`"<tr>" + "<td>" + "</td>" + "<td>" + 'på dej' + "</td>" + "</tr>"`);
-    /*("<tr>" + 
+    createATable() {
+      console.log(this.winner);
+      document.getElementById(
+        "myTable"
+      ).innerHTML = `"<tr>" + "<td>" + "</td>" + "<td>" + 'på dej' + "</td>" + "</tr>"`;
+      /*("<tr>" + 
     "<td>My First Video</td>" +
     "<td>6/11/2015</td>" +
     "<td>www.pluralsight.com</td>" +
     "</tr>");*/
-    
-   }
+    }
   }
 
   class Player {
@@ -174,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   btplayer1.addEventListener("click", function () {
     if (gameStart === false) {
-      alert("Press Start Game to start the game.")
+      alert("Press Start Game to start the game.");
     }
     let value = inputValue.valueAsNumber;
     if (value < 1 || value > 3 || value === undefined) {
@@ -203,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   btplayer2.addEventListener("click", function () {
     if (gameStart === false) {
-      alert("Press Start Game to start the game.")
+      alert("Press Start Game to start the game.");
     }
     let value2 = inputValue2.valueAsNumber;
     if (value2 < 1 || value2 > 3 || value2 === "") {
@@ -225,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-  
 
   //När spelare 2 klickar på knappen 1 att ta pinnar händer följande:
   //Value blir det value som spelaren skrivit in i number-fältet. Detta skickas in i metoden noOfSticks.
