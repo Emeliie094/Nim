@@ -92,8 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
           found = true;
           highScore[i].score += 2;
           highScore.sort(function (a, b) {
-            return b.score - a.score;
+           return b.score - a.score;
           });
+          this.createATable(highScore);
           console.log(highScore);
         }
       }
@@ -102,8 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
         winner.addPoints();
         highScore.push(winner);
         highScore.sort(function (a, b) {
-          return b.score - a.score;
+         return b.score - a.score;
         });
+        this.createATable(highScore);
         console.log(highScore);
       }
       if (confirm(`${winner.name} vann! Vill ni spela igen?`)) {
@@ -133,15 +135,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     createATable() {
-      console.log(this.winner);
-      document.getElementById(
-        "myTable"
-      ).innerHTML = `"<tr>" + "<td>" + "</td>" + "<td>" + 'på dej' + "</td>" + "</tr>"`;
-      /*("<tr>" + 
-    "<td>My First Video</td>" +
-    "<td>6/11/2015</td>" +
-    "<td>www.pluralsight.com</td>" +
-    "</tr>");*/
+     document.getElementById("myTable").innerHTML = "";
+      highScore.forEach(element => {
+      document.getElementById("myTable").innerHTML += "<tr><td>" + element.name + "</td><td>" + element.score + "</td></tr>";
+      
+    });
     }
   }
 
