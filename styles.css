@@ -6,9 +6,23 @@
   margin: 10px;
 }
 
-h3 {
+/*h3 {
   font-size: 70px;
   font-stretch: wider;
+  border-style: outset;
+  padding-left: 30px;
+  padding-right: 30px;
+}*/
+
+h3 > span {
+  display: inline-block;
+  font-stretch: wider;
+  font-size: 70px;
+  min-width: 550px;
+  min-height: 90px;
+  border-style: outset;
+  background-color: burlywood;
+  text-align: center;
 }
 .card {
   margin: 70px auto 70px auto;
@@ -54,4 +68,10 @@ h3 {
   .card {
     width: 80%;
   }
+}
+
+
+.highscore{
+  max-width: 50%;
+  border-style: outset;
 }
