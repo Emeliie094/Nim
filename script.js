@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
           found = true;
           highScore[i].score += 2;
           highScore.sort(function (a, b) {
-           return b.score - a.score;
+            return b.score - a.score;
           });
           this.createATable(highScore);
           console.log(highScore);
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         winner.addPoints();
         highScore.push(winner);
         highScore.sort(function (a, b) {
-         return b.score - a.score;
+          return b.score - a.score;
         });
         this.createATable(highScore);
         console.log(highScore);
@@ -135,11 +135,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     createATable() {
-     document.getElementById("myTable").innerHTML = "";
-      highScore.forEach(element => {
-      document.getElementById("myTable").innerHTML += "<tr><td>" + element.name + "</td><td>" + element.score + "</td></tr>";
-      
-    });
+      document.getElementById("myTable").innerHTML = "";
+      document.getElementById("myTable").innerHTML +=
+        "<tr><th>" + "Name" + "</th><th>" + "Score" + "</th></tr>";
+      highScore.forEach((element) => {
+        document.getElementById("myTable").innerHTML +=
+          "<tr><td>" +
+          element.name +
+          "</td><td>" +
+          element.score +
+          "</td></tr>";
+      });
     }
   }
 
